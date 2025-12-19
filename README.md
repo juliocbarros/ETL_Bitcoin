@@ -12,7 +12,7 @@
 
 Built with **Python**, **PySpark**, **Databricks**, **Unity Catalog**, and **Delta Lake**.
 
-[📖 Documentation](#-about-the-project) • [🚀 Quick Start](#-installation-and-setup) • [🏗️ Architecture](#️-architecture) • [📊 Examples](#-sql-query-examples)
+[📖 Documentation](#-about-the-project) • [🚀 Quick Start](#-installation-and-setup) • [🏗️ Architecture](#️-architecture) • [📊 Dashboard](#-dashboard-visualization)
 
 </div>
 
@@ -21,6 +21,8 @@ Built with **Python**, **PySpark**, **Databricks**, **Unity Catalog**, and **Del
 ## 📋 Table of Contents
 
 - [📖 About the Project](#-about-the-project)
+- [🎯 What We're Building](#-what-were-building)
+- [🎓 Learning Objectives](#-learning-objectives)
 - [✨ Features](#-features)
 - [🏗️ Architecture](#️-architecture)
 - [🎯 Business Use Case](#-business-use-case)
@@ -29,12 +31,14 @@ Built with **Python**, **PySpark**, **Databricks**, **Unity Catalog**, and **Del
 - [🛠️ Prerequisites](#️-prerequisites)
 - [🚀 Installation and Setup](#-installation-and-setup)
 - [💻 Usage](#-usage)
-- [📈 SQL Query Examples](#-sql-query-examples)
-- [⚙️ Automation and Orchestration](#️-automation-and-orchestration)
+- [📈 Dashboard Queries](#-dashboard-queries)
+- [⚙️ Jobs & Pipelines](#️-jobs--pipelines-orchestration)
+- [📊 Dashboard Visualization](#-dashboard-visualization)
 - [🔐 Security and Best Practices](#-security-and-best-practices)
 - [📂 Repository Structure](#-repository-structure)
 - [🧰 Tech Stack](#-tech-stack)
 - [🧠 Skills Demonstrated](#-skills-demonstrated)
+- [🎓 Workshop](#-workshop)
 - [🤝 Contributing](#-contributing)
 - [📝 License](#-license)
 
@@ -50,8 +54,101 @@ This project implements a complete and automated ETL pipeline for ingesting, pro
 - 🌐 **Real-time API Ingestion**: Up-to-date data from public APIs
 - ⚙️ **Automated with Databricks Workflows**: Scheduled or manual execution
 - 🧱 **ACID-compliant Delta Tables**: Guaranteed consistency and integrity
-- 📊 **SQL Analytics Layer**: Ready for dashboards and BI
+- 📊 **Interactive Dashboard**: Real-time visualization with metrics and charts
 - ☁️ **Cloud-native Architecture**: Scalable and resilient
+
+---
+
+## 🎯 What We're Building
+
+In this workshop, you will build a complete ETL pipeline that extracts data from APIs, transforms and stores it in Delta Tables, and creates an interactive dashboard for visualization.
+
+### Complete Project Architecture
+
+**Project Components:**
+- 📥 **EXTRACT**: Data extraction from 2 APIs (Coinbase and CurrencyFreaks)
+- 🔄 **TRANSFORM**: Currency conversion and data structuring
+- 💾 **LOAD**: Storage in Delta Table in Unity Catalog
+- ⚙️ **WORKFLOW**: Automation via Databricks Jobs & Pipelines
+- 📊 **DASHBOARD**: Interactive visualization with metrics and charts
+
+---
+
+## 🎓 Learning Objectives
+
+### General Objective
+
+Teach practical Data Engineering fundamentals through building a complete ETL pipeline, from API data extraction to creating interactive dashboards, using modern technologies widely used in the market.
+
+### Learning Goals
+
+#### 1. Python Fundamentals for Data Engineering
+- ✅ Variables and data types (string, int, float, bool, list, dict)
+- ✅ Functions and methods (creation, reuse, string/list/dict methods)
+- ✅ Data manipulation (data structures, iterations)
+- ✅ API handling (HTTP requests, JSON, error handling)
+
+**Why it's important?** Python is the most used language in Data Engineering. Mastering fundamentals is essential for building robust pipelines.
+
+#### 2. SQL Fundamentals for Data Analysis
+- ✅ SELECT, FROM, WHERE (basic queries)
+- ✅ ORDER BY and LIMIT (ordering and limiting results)
+- ✅ Alias (AS) (column renaming)
+- ✅ Analytical queries (latest value, maximum, minimum, history)
+
+**Why it's important?** SQL is the standard language for querying data. Every Data Engineer needs to know SQL to create dashboards, reports, and analyses.
+
+#### 3. ETL (Extract, Transform, Load)
+- ✅ **Extract**: Consume data from REST APIs
+- ✅ **Transform**: Convert currencies, structure data, add metadata
+- ✅ **Load**: Store data in optimized formats (Delta Lake)
+
+**Why it's important?** ETL is the heart of Data Engineering. 90% of a Data Engineer's work is building and maintaining ETL pipelines.
+
+#### 4. PySpark and Distributed Processing
+- ✅ PySpark DataFrames (distributed data structure)
+- ✅ Difference between Pandas and PySpark (when to use each)
+- ✅ Large-scale processing (preparation for Big Data)
+
+**Why it's important?** PySpark allows processing terabytes of distributed data in clusters. It's essential for real Big Data projects.
+
+#### 5. Databricks and Unity Catalog
+- ✅ Databricks Workspace (development environment)
+- ✅ Unity Catalog (data governance: Catalog → Schema → Table)
+- ✅ Interactive notebooks (development and documentation)
+
+**Why it's important?** Databricks is one of the most used platforms in the market. Unity Catalog is the modern standard for data organization in Data Lakes.
+
+#### 6. Delta Lake and ACID Storage
+- ✅ Delta Tables (tables with ACID transactions)
+- ✅ Time Travel (access to historical versions)
+- ✅ Schema Evolution (automatic schema evolution)
+- ✅ Incremental append (data history)
+
+**Why it's important?** Delta Lake brings reliability and performance to Data Lakes. It's the modern standard for analytical data storage.
+
+#### 7. Automation with Databricks Workflows
+- ✅ Workflow creation (pipeline orchestration)
+- ✅ Key-Value parameters (dynamic configuration)
+- ✅ Scheduled execution (automated data collection)
+
+**Why it's important?** Pipelines need to run automatically. Workflows allow orchestrating and scheduling executions without manual intervention.
+
+#### 8. Visualization and Dashboards
+- ✅ SQL queries for dashboards (4 main queries)
+- ✅ Data visualization (charts, metrics, history)
+- ✅ Trend analysis (temporal price evolution)
+
+**Why it's important?** Data without visualization doesn't generate value. Dashboards allow stakeholders to make data-driven decisions.
+
+### Final Workshop Result
+
+At the end of the workshop, you will have built:
+
+- ✅ Complete working ETL pipeline in production
+- ✅ Practical knowledge of Python, SQL, PySpark, and Databricks
+- ✅ Real portfolio to showcase in interviews
+- ✅ Solid foundation to advance in Data Engineering
 
 ---
 
@@ -64,7 +161,8 @@ This project implements a complete and automated ETL pipeline for ingesting, pro
 - ✅ **Schema Evolution**: Automatic schema evolution without breaking pipelines
 - ✅ **Data Governance**: Unity Catalog for centralized management
 - ✅ **ACID Transactions**: Guaranteed transactional consistency
-- ✅ **Monitoring**: Execution logs and metrics
+- ✅ **Interactive Dashboard**: Real-time visualization with metrics and charts
+- ✅ **Automated Workflows**: Scheduled or manual execution via Databricks Jobs
 
 ---
 
@@ -93,8 +191,8 @@ This project implements a complete and automated ETL pipeline for ingesting, pro
 ┌─────────────────────────────────────────────────────────────┐
 │         Delta Lake (Unity Catalog)                           │
 │  • Catalog: pipeline_api_bitcoin                            │
-│  • Schema: biticoin_delta                                   │
-│  • Table: btc_data                                          │
+│  • Schema: bitcoin_data                                     │
+│  • Table: bitcoin_data                                      │
 │  • Volume: raw_files (JSON/Parquet)                         │
 └────────────────────────┬────────────────────────────────────┘
                          │
@@ -104,6 +202,15 @@ This project implements a complete and automated ETL pipeline for ingesting, pro
 │  • Real-time Queries                                        │
 │  • Historical Analysis                                      │
 │  • Dashboard Integration                                    │
+└────────────────────────┬────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Interactive Dashboard                          │
+│  • Last Price (BRL)                                         │
+│  • Max Price (Historical)                                   │
+│  • Min Price (Historical)                                   │
+│  • Price Evolution Chart                                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -125,10 +232,10 @@ This project implements a complete and automated ETL pipeline for ingesting, pro
      - **Parquet**: Optimized columnar format
      - **Delta Table**: ACID-compliant format with time travel
 
-4. **Analytics**
+4. **Analytics & Dashboard**
    - Direct SQL queries on Delta Tables
    - Integration with BI tools
-   - Real-time dashboards
+   - Real-time interactive dashboards
 
 ---
 
@@ -149,8 +256,42 @@ This pipeline was developed to meet the following business needs:
 ### 1️⃣ Extract (Extraction)
 
 **Data Sources:**
-- **Bitcoin Price (USD)**: Extracted from [Coinbase API](https://api.coinbase.com/v2/prices/spot)
-- **USD → BRL Exchange Rate**: Extracted from [CurrencyFreaks API](https://api.currencyfreaks.com/)
+
+**a) Bitcoin Data (Coinbase API)**
+- Source: `https://api.coinbase.com/v2/prices/spot`
+- Extracted Data:
+  - `amount`: Current Bitcoin price in USD
+  - `base`: Cryptocurrency (BTC)
+  - `currency`: Reference currency (USD)
+- Format: JSON
+- Frequency: Real-time (on-demand)
+
+**b) USD-BRL Exchange Rate (CurrencyFreaks API)**
+- Source: `https://api.currencyfreaks.com/v2.0/rates/latest`
+- Extracted Data:
+  - `rates.BRL`: USD to BRL conversion rate
+  - `date`: Exchange rate date/time
+  - `base`: Base currency (USD)
+- Format: JSON
+- Authentication: API Key (via pipeline parameters)
+- Frequency: Real-time (on-demand)
+
+**Extraction Functions:**
+
+```python
+def extrair_dados_bitcoin():
+    """Extracts complete JSON from Coinbase API."""
+    url = 'https://api.coinbase.com/v2/prices/spot'
+    resposta = requests.get(url)
+    return resposta.json()
+
+def extrair_cotacao_usd_brl():
+    """Extracts USD-BRL exchange rate from CurrencyFreaks API."""
+    api_key = dbutils.widgets.get("api_key")
+    url = f'https://api.currencyfreaks.com/v2.0/rates/latest?apikey={api_key}'
+    resposta = requests.get(url)
+    return resposta.json()
+```
 
 **Features:**
 - Robust API handling (JSON parsing, error handling)
@@ -166,26 +307,74 @@ This pipeline was developed to meet the following business needs:
 - ✅ Schema standardization
 - ✅ Data validation
 
-**Transformation Example:**
+**Transformation Function:**
+
 ```python
-valor_brl = valor_usd * taxa_usd_brl
-timestamp = datetime.now()
+def tratar_dados_bitcoin(dados_json, taxa_usd_brl):
+    """Transforms raw API data, renames columns, 
+    adds timestamp and converts to BRL."""
+    valor_usd = float(dados_json['data']['amount'])
+    criptomoeda = dados_json['data']['base']
+    moeda_original = dados_json['data']['currency']
+    
+    # Converting from USD to BRL
+    valor_brl = valor_usd * taxa_usd_brl
+    
+    # Adding timestamp as datetime object
+    timestamp = datetime.now()
+    
+    dados_tratados = [{
+        "valor_usd": valor_usd,
+        "valor_brl": valor_brl,
+        "criptomoeda": criptomoeda,
+        "moeda_original": moeda_original,
+        "taxa_conversao_usd_brl": taxa_usd_brl,
+        "timestamp": timestamp
+    }]
+    
+    return dados_tratados
 ```
 
 ### 3️⃣ Load (Loading)
 
-**Storage Destinations:**
+**Storage Destination:**
 
-1. **Raw Volume (JSON/Parquet)**
-   - Location: `/Volumes/pipeline_api_bitcoin/lakehouse/raw_files/`
-   - Format: JSON and Parquet
-   - Purpose: Raw data for auditing and reprocessing
+**Delta Table in Unity Catalog**
+- Catalog: `pipeline_api_bitcoin`
+- Schema: `bitcoin_data`
+- Table: `bitcoin_data`
+- Full Path: `pipeline_api_bitcoin.bitcoin_data.bitcoin_data`
 
-2. **Delta Table**
-   - Location: `pipeline_api_bitcoin.biticoin_delta.btc_data`
-   - Format: Delta Lake
-   - Mode: Incremental append (historical tracking)
-   - Schema Evolution: Enabled
+**Storage Characteristics:**
+- Format: Delta Lake
+  - ACID transactions
+  - Time Travel (access to historical versions)
+  - Automatic Schema Evolution
+  - Automatic optimizations
+- Write Mode:
+  - `append`: Adds new records without overwriting
+  - `mergeSchema`: Allows automatic schema evolution
+- Structure:
+  - Table created automatically by `saveAsTable()`
+  - Schema inferred from PySpark DataFrame
+  - Timestamp as TIMESTAMP type (not string)
+
+**Load Code:**
+
+```python
+# Create Spark DataFrame
+df = spark.createDataFrame(dados_bitcoin_tratado)
+
+# Delta table path in Unity Catalog
+delta_table_path = "pipeline_api_bitcoin.bitcoin_data.bitcoin_data"
+
+# Save as Delta Table (append mode)
+df.write \
+    .format("delta") \
+    .mode("append") \
+    .option("mergeSchema", "true") \
+    .saveAsTable(delta_table_path)
+```
 
 **Features:**
 - ✅ Incremental append for complete history
@@ -197,7 +386,7 @@ timestamp = datetime.now()
 
 ## 📊 Data Model
 
-### Delta Table Schema: `btc_data`
+### Delta Table Schema: `bitcoin_data`
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -213,13 +402,21 @@ timestamp = datetime.now()
 ```json
 {
   "valor_usd": 43250.50,
-  "valor_brl": 215000.00,
+  "valor_brl": 236125.48,
   "criptomoeda": "BTC",
   "moeda_original": "USD",
-  "taxa_conversao_usd_brl": 4.97,
-  "timestamp": "2024-01-15T10:30:45.123456"
+  "taxa_conversao_usd_brl": 5.4567,
+  "timestamp": "2025-01-16T14:30:00"
 }
 ```
+
+### Example Generated Data
+
+| valor_usd | valor_brl | criptomoeda | moeda_original | taxa_conversao_usd_brl | timestamp |
+|-----------|-----------|-------------|----------------|------------------------|-----------|
+| 43250.50 | 236125.48 | BTC | USD | 5.4567 | 2025-01-16 14:30:00 |
+| 43280.25 | 236245.12 | BTC | USD | 5.4572 | 2025-01-16 14:31:00 |
+| 43295.00 | 236310.15 | BTC | USD | 5.4575 | 2025-01-16 14:32:00 |
 
 ---
 
@@ -227,14 +424,16 @@ timestamp = datetime.now()
 
 Before getting started, make sure you have:
 
-- ✅ **Databricks Workspace**: Access to a Databricks workspace (Community Edition or higher)
+- ✅ **Basic Programming Knowledge**: Any programming language
+- ✅ **Internet Access**: Required for API calls and Databricks
+- ✅ **Databricks Workspace**: Free account available (we'll create during the workshop)
+- ✅ **CurrencyFreaks API Key**: Get it at [currencyfreaks.com](https://currencyfreaks.com)
 - ✅ **Python 3.8+**: Compatible Python version
-- ✅ **Coinbase API Access**: Public access (no authentication required)
-- ✅ **CurrencyFreaks API Key**: API key for CurrencyFreaks (get it at [currencyfreaks.com](https://currencyfreaks.com))
 - ✅ **Python Libraries**:
-  - `requests`
-  - `pandas`
-  - `pyspark` (provided by Databricks)
+  - `requests` - For HTTP requests
+  - `pyspark` - For distributed processing (available in Databricks)
+  - `datetime` - For timestamp manipulation
+- ✅ **Willingness to Learn!** 🚀
 
 ---
 
@@ -250,8 +449,9 @@ cd ETL_Bitcoin
 ### 2. Configure Databricks
 
 1. Access your Databricks workspace
-2. Create a new notebook or import the existing notebook
-3. Attach the notebook to a Databricks cluster
+2. Go to **Workspace** → **Import**
+3. Select the `.py` files from the `src/` folder
+4. Attach the notebook to a Databricks cluster
 
 ### 3. Configure APIs
 
@@ -259,7 +459,17 @@ cd ETL_Bitcoin
 
 ⚠️ **Important**: Never hardcode API keys in code!
 
-**Option 1: Use Databricks Secrets (Recommended)**
+**Option 1: Use Databricks Widgets (Recommended for Workflows)**
+```python
+# In workflow, configure Key-Value parameter:
+# Key: api_key
+# Value: your_api_key_here
+
+# In code:
+api_key = dbutils.widgets.get("api_key")
+```
+
+**Option 2: Use Databricks Secrets (Recommended for Production)**
 ```python
 # In Databricks, configure the secret:
 # Databricks CLI: databricks secrets create-scope --scope bitcoin-pipeline
@@ -269,7 +479,7 @@ cd ETL_Bitcoin
 api_key = dbutils.secrets.get(scope="bitcoin-pipeline", key="currencyfreaks-api-key")
 ```
 
-**Option 2: Environment Variables**
+**Option 3: Environment Variables**
 ```python
 import os
 api_key = os.environ.get('CURRENCYFREAKS_API_KEY')
@@ -285,8 +495,8 @@ CREATE CATALOG IF NOT EXISTS pipeline_api_bitcoin
 COMMENT 'Catalog for pipeline api Bitcoin';
 
 -- Create Schema for Delta Tables
-CREATE SCHEMA IF NOT EXISTS pipeline_api_bitcoin.biticoin_delta
-COMMENT 'Lakehouse schema to store delta data';
+CREATE SCHEMA IF NOT EXISTS pipeline_api_bitcoin.bitcoin_data
+COMMENT 'Schema to store processed Bitcoin data';
 
 -- Create Schema for Lakehouse
 CREATE SCHEMA IF NOT EXISTS pipeline_api_bitcoin.lakehouse
@@ -311,7 +521,7 @@ In the Databricks notebook, execute:
 
 ### Manual Execution
 
-1. Open the notebook `src/Get_Biticoin.ipynb` in Databricks
+1. Open the notebook `src/get_bitcoin_full.py` in Databricks
 2. Execute all cells sequentially
 3. Data will be extracted, transformed, and loaded automatically
 
@@ -319,14 +529,20 @@ In the Databricks notebook, execute:
 
 1. **Create Job in Databricks**:
    - Go to **Workflows** → **Create Job**
-   - Add the notebook as a task
-   - Configure parameters if needed
+   - Add the notebook `get_bitcoin_macro.py` as a task
+   - Configure Key-Value parameters:
+     - Key: `api_key`
+     - Value: `your_api_key_here`
 
-2. **Configure Schedule** (Optional):
+2. **Configure Cluster**:
+   - Select an existing cluster or create a new one
+   - Recommended: Single Node or Small cluster for testing
+
+3. **Configure Schedule** (Optional):
    - Set up a cron schedule (e.g., `0 */1 * * *` to run every hour)
    - Or execute manually when needed
 
-3. **Monitor Executions**:
+4. **Monitor Executions**:
    - Track logs and metrics in the Databricks interface
    - Set up alerts for failures
 
@@ -334,7 +550,7 @@ In the Databricks notebook, execute:
 
 ```python
 # 1. Extract data
-dados_bitcoin = Extract_Bitcoin_Data()
+dados_bitcoin = extrair_dados_bitcoin()
 dados_cotacao = extrair_cotacao_usd_brl()
 
 # 2. Extract conversion rate
@@ -343,125 +559,192 @@ taxa_usd_brl = float(dados_cotacao['rates']['BRL'])
 # 3. Transform data
 dados_bitcoin_tratado = tratar_dados_bitcoin(dados_bitcoin, taxa_usd_brl)
 
-# 4. Create DataFrame
-df_bitcoin = pd.DataFrame(dados_bitcoin_tratado)
+# 4. Create Spark DataFrame
+df = spark.createDataFrame(dados_bitcoin_tratado)
 
-# 5. Save in multiple formats
-# JSON and Parquet (raw files)
-# Delta Table (analytics-ready)
+# 5. Save as Delta Table
+delta_table_path = "pipeline_api_bitcoin.bitcoin_data.bitcoin_data"
+df.write \
+    .format("delta") \
+    .mode("append") \
+    .option("mergeSchema", "true") \
+    .saveAsTable(delta_table_path)
 ```
 
----
+### Verify Data
 
-## 📈 SQL Query Examples
-
-### Latest Bitcoin Price
+After execution, data will be available in:
 
 ```sql
-SELECT 
-    valor_usd,
-    valor_brl,
-    timestamp
-FROM pipeline_api_bitcoin.biticoin_delta.btc_data
+SELECT * FROM pipeline_api_bitcoin.bitcoin_data.bitcoin_data
 ORDER BY timestamp DESC
-LIMIT 1;
-```
-
-### Historical Maximum Price
-
-```sql
-SELECT 
-    MAX(valor_brl) AS preco_maximo_brl,
-    MAX(valor_usd) AS preco_maximo_usd,
-    MAX(timestamp) AS data_maximo
-FROM pipeline_api_bitcoin.biticoin_delta.btc_data;
-```
-
-### Historical Minimum Price
-
-```sql
-SELECT 
-    MIN(valor_brl) AS preco_minimo_brl,
-    MIN(valor_usd) AS preco_minimo_usd,
-    MIN(timestamp) AS data_minimo
-FROM pipeline_api_bitcoin.biticoin_delta.btc_data;
-```
-
-### Temporal Evolution (Last 24 Hours)
-
-```sql
-SELECT 
-    DATE_TRUNC('hour', timestamp) AS hora,
-    AVG(valor_brl) AS preco_medio_brl,
-    AVG(valor_usd) AS preco_medio_usd,
-    COUNT(*) AS registros
-FROM pipeline_api_bitcoin.biticoin_delta.btc_data
-WHERE timestamp >= CURRENT_TIMESTAMP - INTERVAL 24 HOURS
-GROUP BY DATE_TRUNC('hour', timestamp)
-ORDER BY hora DESC;
-```
-
-### Volatility Analysis
-
-```sql
-SELECT 
-    DATE(timestamp) AS data,
-    MIN(valor_brl) AS minimo_brl,
-    MAX(valor_brl) AS maximo_brl,
-    AVG(valor_brl) AS media_brl,
-    (MAX(valor_brl) - MIN(valor_brl)) / AVG(valor_brl) * 100 AS volatilidade_percentual
-FROM pipeline_api_bitcoin.biticoin_delta.btc_data
-GROUP BY DATE(timestamp)
-ORDER BY data DESC
-LIMIT 30;
-```
-
-### Time Travel - Access Previous Version
-
-```sql
--- View version history
-DESCRIBE HISTORY pipeline_api_bitcoin.biticoin_delta.btc_data;
-
--- Access specific version (e.g., version 5)
-SELECT * FROM pipeline_api_bitcoin.biticoin_delta.btc_data 
-VERSION AS OF 5;
+LIMIT 10;
 ```
 
 ---
 
-## ⚙️ Automation and Orchestration
+## 📈 Dashboard Queries
 
-### Databricks Workflows
+The dashboard uses 4 SQL queries to display different visualizations of Bitcoin data. All queries consult the Delta table `pipeline_api_bitcoin.bitcoin_data.bitcoin_data`.
 
-The pipeline can be automated using Databricks Jobs & Workflows:
+### 1. LAST PRICE — Latest Recorded Price
 
-**Features:**
-- ✅ Parameterized execution (API Keys via secrets)
-- ✅ Manual or scheduled execution (cron)
-- ✅ Execution logs and monitoring
-- ✅ Automatic retry on failure
-- ✅ Email/Slack notifications
+Returns the most recent Bitcoin price and collection timestamp.
 
-**Job Configuration Example:**
-
-```json
-{
-  "name": "Bitcoin ETL Pipeline",
-  "schedule": {
-    "quartz_cron_expression": "0 */1 * * * ?",
-    "timezone_id": "America/Sao_Paulo"
-  },
-  "tasks": [
-    {
-      "task_key": "extract_transform_load",
-      "notebook_task": {
-        "notebook_path": "/src/Get_Biticoin",
-        "base_parameters": {}
-      }
-    }
-  ]
-}
+```sql
+SELECT
+  valor_brl        AS last_price,
+  timestamp        AS last_timestamp
+FROM pipeline_api_bitcoin.bitcoin_data.bitcoin_data
+WHERE criptomoeda = 'BTC'
+ORDER BY timestamp DESC
+LIMIT 1
 ```
+
+**Dashboard Usage**: Displayed as main value in BRL (card or metric).
+
+### 2. MAX PRICE — Historical Maximum Price
+
+Returns the highest price ever recorded and when it occurred.
+
+```sql
+SELECT
+  valor_brl  AS max_price,
+  timestamp  AS max_timestamp
+FROM pipeline_api_bitcoin.bitcoin_data.bitcoin_data
+WHERE criptomoeda = 'BTC'
+ORDER BY valor_brl DESC, timestamp DESC
+LIMIT 1
+```
+
+**Dashboard Usage**: Displayed as historical maximum metric in BRL.
+
+### 3. MIN PRICE — Historical Minimum Price
+
+Returns the lowest price ever recorded and when it occurred.
+
+```sql
+SELECT
+  valor_brl  AS min_price,
+  timestamp  AS min_timestamp
+FROM pipeline_api_bitcoin.bitcoin_data.bitcoin_data
+WHERE criptomoeda = 'BTC'
+ORDER BY valor_brl ASC, timestamp DESC
+LIMIT 1
+```
+
+**Dashboard Usage**: Displayed as historical minimum metric in BRL.
+
+### 4. PRICE HISTORY — Line Chart
+
+Returns complete price history ordered by timestamp for chart visualization.
+
+```sql
+SELECT
+  timestamp,
+  valor_usd,
+  valor_brl,
+  taxa_conversao_usd_brl
+FROM pipeline_api_bitcoin.bitcoin_data.bitcoin_data
+WHERE criptomoeda = 'BTC'
+ORDER BY timestamp ASC
+```
+
+**Dashboard Usage**: Displayed as line chart showing price evolution over time.
+
+**Possible Variations:**
+
+- **Last N hours**: `WHERE timestamp >= CURRENT_TIMESTAMP - INTERVAL '24' HOUR`
+- **Last N records**: `ORDER BY timestamp DESC LIMIT 100`
+- **Hourly aggregation**: `GROUP BY DATE_TRUNC('hour', timestamp)`
+
+### Query Summary
+
+| Query | Ordering | Limit | Usage |
+|-------|----------|-------|-------|
+| LAST PRICE | `ORDER BY timestamp DESC` | `LIMIT 1` | Card/Main metric (BRL) |
+| MAX PRICE | `ORDER BY valor_brl DESC` | `LIMIT 1` | Maximum metric (BRL) |
+| MIN PRICE | `ORDER BY valor_brl ASC` | `LIMIT 1` | Minimum metric (BRL) |
+| HISTORY | `ORDER BY timestamp ASC` | No limit | Line chart |
+
+All queries use:
+- `WHERE criptomoeda = 'BTC'` (filter)
+- `AS` (alias to facilitate dashboard usage)
+
+---
+
+## ⚙️ Jobs & Pipelines - Orchestration
+
+To automate the execution of our ETL pipeline, we create a Job in Databricks that orchestrates the execution of the `get_bitcoin_macro.py` script.
+
+### What are Jobs & Pipelines?
+
+Jobs are scheduled or manually triggered tasks in Databricks that execute notebooks or Python scripts. They allow:
+
+- ✅ **Automation**: Execute the pipeline at regular intervals (every hour, day, etc.)
+- ✅ **Orchestration**: Coordinate multiple tasks in sequence
+- ✅ **Monitoring**: Track executions, logs, and history
+- ✅ **Parameters**: Pass dynamic configurations (like API keys) via Key-Value pairs
+- ✅ **Alerts**: Notifications in case of failure or success
+
+### Pipeline Configuration
+
+The pipeline is configured with:
+
+- **Main Task**: Executes the `get_bitcoin_macro.py` notebook
+- **Key-Value Parameters**:
+  - `api_key`: CurrencyFreaks API key for currency conversion
+- **Cluster**: Databricks cluster for processing
+- **Schedule** (optional): Automatic scheduling for periodic collection
+
+### Pipeline Structure
+
+```
+📝 Task: get_bitcoin_macro - Executes extraction and load script
+🔑 Parameters: API key configuration via Key-Value
+⚙️ Cluster: Execution environment
+📊 Output: Data saved in Delta Table pipeline_api_bitcoin.bitcoin_data.bitcoin_data
+```
+
+---
+
+## 📊 Dashboard Visualization
+
+After collecting data, we create an interactive Dashboard in Databricks to visualize and monitor Bitcoin prices in real-time.
+
+### What is a Dashboard?
+
+A Dashboard is a visual interface that displays metrics, charts, and analyses of collected data. It allows:
+
+- ✅ **Real-time Visualization**: See the latest collected prices
+- ✅ **Main Metrics**: Latest price, historical maximum, historical minimum
+- ✅ **Temporal Charts**: Price evolution over time
+- ✅ **Quick Analysis**: Identify trends and patterns
+- ✅ **Sharing**: Share insights with stakeholders
+
+### Dashboard Components
+
+The dashboard uses 4 SQL queries to display different visualizations:
+
+1. **LAST PRICE**: Latest price in BRL collected
+2. **MAX PRICE**: Highest historical price in BRL
+3. **MIN PRICE**: Lowest historical price in BRL
+4. **HISTORY**: Line chart with temporal evolution
+
+### Dashboard Elements
+
+- 📈 **Metric Cards**: Latest price, maximum and minimum
+- 📊 **Line Chart**: Price evolution over time
+- 🔄 **Automatic Update**: Data updated as the pipeline executes
+- 💰 **Values in BRL**: All values displayed in Brazilian Real
+
+### How to Create the Dashboard
+
+1. Access **SQL → Dashboards** in Databricks
+2. Create a new dashboard
+3. Add visualizations using the documented SQL queries
+4. Configure automatic refresh
+5. Share with your team
 
 ---
 
@@ -469,11 +752,18 @@ The pipeline can be automated using Databricks Jobs & Workflows:
 
 ### Security
 
-- ✅ **API Keys never hardcoded**: Always use Databricks Secrets or environment variables
-- ✅ **Parameterized secrets in workflows**: Secure credential configuration
+- ✅ **API Keys never hardcoded**: Always use Databricks Secrets, Widgets, or environment variables
+- ✅ **Parameterized secrets in workflows**: Secure credential configuration via Key-Value pairs
 - ✅ **Data governance via Unity Catalog**: Centralized access control
 - ✅ **ACID-compliant storage**: Guaranteed transactional consistency
 - ✅ **Time travel for auditing**: Complete change traceability
+
+### Data Governance
+
+- ✅ Use Unity Catalog for hierarchical organization
+- ✅ Define clear and descriptive schemas
+- ✅ Document tables and columns
+- ✅ Configure data retention policies
 
 ### Implemented Best Practices
 
@@ -491,31 +781,24 @@ The pipeline can be automated using Databricks Jobs & Workflows:
 ```
 ETL_Bitcoin/
 │
-├── README.md                 # Main documentation
+├── README.md                     # Main documentation
+│
+├── img/
+│   └── SeUZPWKQ.png              # Project cover image
 │
 └── src/
-    └── Get_Biticoin.ipynb   # Main ETL pipeline notebook
-        │
-        ├── 1. Import Libraries
-        ├── 2. Extract and Transform Data
-        │   ├── Extract_Bitcoin_Data()
-        │   ├── extrair_cotacao_usd_brl()
-        │   └── tratar_dados_bitcoin()
-        │
-        ├── 3. Config Unity Catalog
-        │   ├── Create Catalog
-        │   ├── Create Schemas
-        │   └── Create Volume
-        │
-        ├── 4. Create Pandas DataFrame
-        ├── 5. Save to JSON
-        ├── 6. Save to Parquet
-        ├── 7. Convert to PySpark DataFrame
-        ├── 8. Save as Delta Table
-        ├── 9. Read Delta Table
-        ├── 10. Query with SQL
-        └── 11. Check Delta History (Time Travel)
+    ├── get_bitcoin_full.py       # Complete notebook with documentation
+    ├── get_bitcoin_macro.py      # Script for workflows (simplified)
+    ├── aquecimento_python.py     # Python basics tutorial
+    └── aquecimento_sql.py        # SQL basics tutorial
 ```
+
+### Main Files
+
+- **`get_bitcoin_full.py`**: Complete notebook with detailed explanations, examples of saving in JSON/CSV/Parquet/Delta, and visualizations
+- **`get_bitcoin_macro.py`**: Simplified version for use in workflows, only saves to Delta Table
+- **`aquecimento_python.py`**: Python basics tutorial (variables, print, methods)
+- **`aquecimento_sql.py`**: SQL basics tutorial (SELECT, WHERE, ORDER BY, LIMIT)
 
 ---
 
@@ -530,6 +813,39 @@ ETL_Bitcoin/
 | **Databricks** | Platform | Processing and orchestration platform |
 | **Delta Lake** | 2.0+ | ACID-compliant storage format |
 | **Unity Catalog** | Latest | Data governance and catalog |
+
+### Why Use Databricks and PySpark?
+
+#### PySpark vs Pandas
+
+| Characteristic | Pandas | PySpark |
+|----------------|--------|---------|
+| Scalability | Single machine (RAM limited) | Distributed (clusters) |
+| Data Volume | Megabytes to Gigabytes | Terabytes to Petabytes |
+| Processing | In-memory (RAM) | Distributed (disk + memory) |
+| Use Case | Exploratory analysis, small datasets | Big Data, production pipelines |
+
+**In this project**: We use PySpark because:
+- ✅ Prepared to scale
+- ✅ Native integration with Databricks
+- ✅ Delta Lake support
+- ✅ Distributed processing
+
+#### Delta Lake vs Simple Parquet
+
+| Characteristic | Parquet | Delta Lake |
+|----------------|---------|------------|
+| ACID Transactions | ❌ | ✅ |
+| Time Travel | ❌ | ✅ |
+| Schema Evolution | Manual | Automatic |
+| Updates/Deletes | ❌ | ✅ |
+| Performance | Good | Optimized |
+
+**In this project**: We use Delta Lake because:
+- ✅ Complete price history (Time Travel)
+- ✅ Consistency guarantees (ACID)
+- ✅ Allows schema evolution without breaking old data
+- ✅ Automatic optimizations
 
 ### Format Comparison
 
@@ -555,29 +871,9 @@ This project demonstrates proficiency in:
 - ✅ **API Integration**: REST API integration
 - ✅ **Cloud Data Architecture**: Scalable cloud-native architecture
 - ✅ **Data Governance**: Unity Catalog and data governance
+- ✅ **Dashboard Creation**: Interactive data visualization
 - ✅ **Best Practices**: Security, versioning, and documentation
 
 ---
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-
-1. 🍴 Fork the project
-2. 🌿 Create a branch for your feature (`git checkout -b feature/AmazingFeature`)
-3. 💾 Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. 📤 Push to the branch (`git push origin feature/AmazingFeature`)
-5. 🔀 Open a Pull Request
-
-### Contribution Guidelines
-
-- Follow existing code standards
-- Add tests for new features
-- Update documentation as needed
-- Keep commits descriptive and organized
-
----
-
-
 
 
