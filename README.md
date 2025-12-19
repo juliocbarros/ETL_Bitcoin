@@ -578,25 +578,6 @@ Contributions are welcome! Feel free to:
 
 ---
 
-## 📝 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
----
 
-## 📞 Contact and Support
-
-For questions, suggestions, or issues:
-
-- 📧 Open an [Issue](../../issues) in the repository
-- 💬 Contact through the repository
-
----
-
-<div align="center">
-
-**Developed with ❤️ for the Data Engineering community**
-
-⭐ If this project was helpful, consider giving it a star!
-
-</div>
