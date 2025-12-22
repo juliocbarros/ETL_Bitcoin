@@ -1,0 +1,383 @@
+{
+  "datasets": [
+    {
+      "name": "d678192d",
+      "displayName": "preco_minimo",
+      "queryLines": [
+        " SELECT \r\n",
+        "  round(valor_brl,2)  AS min_price,\r\n",
+        "  timestamp  AS min_timestamp\r\n",
+        "\r\n",
+        " FROM pipeline_api_bitcoin.biticoin_delta.btc_data\r\n",
+        " WHERE criptomoeda =  'BTC'  \r\n",
+        " ORDER BY valor_brl ASC,timestamp DESC\r\n",
+        " LIMIT 1"
+      ]
+    },
+    {
+      "name": "af88a87d",
+      "displayName": "preco_maximo",
+      "queryLines": [
+        " SELECT \r\n",
+        "  round(valor_brl,2)  AS max_price,\r\n",
+        "  timestamp  AS max_timestamp\r\n",
+        "\r\n",
+        " FROM pipeline_api_bitcoin.biticoin_delta.btc_data\r\n",
+        " WHERE criptomoeda =  'BTC'  \r\n",
+        " ORDER BY valor_brl DESC,timestamp DESC\r\n",
+        " LIMIT 1"
+      ]
+    },
+    {
+      "name": "f9bb0745",
+      "displayName": "last_price",
+      "queryLines": [
+        " SELECT \r\n",
+        "  round(valor_brl,2)  AS last_price,\r\n",
+        "  timestamp  AS last_timestamp\r\n",
+        "\r\n",
+        " FROM pipeline_api_bitcoin.biticoin_delta.btc_data\r\n",
+        " WHERE criptomoeda =  'BTC'  \r\n",
+        " ORDER BY timestamp DESC\r\n",
+        " LIMIT 1"
+      ]
+    },
+    {
+      "name": "8964dca0",
+      "displayName": "dados_bitcoin",
+      "queryLines": [
+        "SELECT \r\n",
+        " timestamp,\r\n",
+        " round(valor_brl,2) as valor_brl\r\n",
+        "FROM  pipeline_api_bitcoin.biticoin_delta.btc_data\r\n",
+        "WHERE criptomoeda = 'BTC'\r\n",
+        "ORDER BY timestamp \r\n"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "57d6890f",
+      "displayName": "Dashboard",
+      "layout": [
+        {
+          "widget": {
+            "name": "d944ac52",
+            "multilineTextboxSpec": {
+              "lines": [
+                "<span style=\"text-align:center;display:block\"><span style=\"font-family: Tahoma;font-size: 18px;\">Ultima Cotacao</span></span>"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "c995b82a",
+            "multilineTextboxSpec": {
+              "lines": [
+                "<span style=\"text-align:center;display:block\"><span style=\"font-family:Tahoma;font-size:18px\">Maior Cotacao</span></span>"
+              ]
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "6a2094a7",
+            "multilineTextboxSpec": {
+              "lines": [
+                "<span style=\"text-align:center;display:block\"><span style=\"font-family:Tahoma;font-size:18px\">Menor Cotacao</span></span>"
+              ]
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "7ffcc9d7",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f9bb0745",
+                  "fields": [
+                    {
+                      "name": "minutely(last_timestamp)",
+                      "expression": "DATE_TRUNC(\"MINUTE\", `last_timestamp`)"
+                    },
+                    {
+                      "name": "sum(last_price)",
+                      "expression": "SUM(`last_price`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "DATE_TRUNC(\"MINUTE\", `last_timestamp`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(last_price)",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "BRL",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 3
+                    }
+                  }
+                },
+                "period": {
+                  "fieldName": "minutely(last_timestamp)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 1,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "927b09f5",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "af88a87d",
+                  "fields": [
+                    {
+                      "name": "minutely(max_timestamp)",
+                      "expression": "DATE_TRUNC(\"MINUTE\", `max_timestamp`)"
+                    },
+                    {
+                      "name": "max_price",
+                      "expression": "`max_price`"
+                    }
+                  ],
+                  "disaggregated": true,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "DATE_TRUNC(\"MINUTE\", `max_timestamp`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "max_price",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "BRL",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 3
+                    }
+                  }
+                },
+                "period": {
+                  "fieldName": "minutely(max_timestamp)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 1,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "385f7b57",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "d678192d",
+                  "fields": [
+                    {
+                      "name": "minutely(min_timestamp)",
+                      "expression": "DATE_TRUNC(\"MINUTE\", `min_timestamp`)"
+                    },
+                    {
+                      "name": "min_price",
+                      "expression": "`min_price`"
+                    }
+                  ],
+                  "disaggregated": true,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "DATE_TRUNC(\"MINUTE\", `min_timestamp`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "min_price",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "BRL",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 3
+                    }
+                  }
+                },
+                "period": {
+                  "fieldName": "minutely(min_timestamp)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 1,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "da882f84",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "8964dca0",
+                  "fields": [
+                    {
+                      "name": "timestamp",
+                      "expression": "`timestamp`"
+                    },
+                    {
+                      "name": "valor_brl",
+                      "expression": "`valor_brl`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "timestamp",
+                  "displayName": "Date",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "valor_brl",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 5,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "096191c1",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "20bd170b",
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {},
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "canvasBackgroundColor": {
+        "light": "#FAFAFB",
+        "dark": "#1F272D"
+      },
+      "widgetBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#11171C"
+      },
+      "fontColor": {
+        "light": "#11171C",
+        "dark": "#E8ECF0"
+      },
+      "selectionColor": {
+        "light": "#2272B4",
+        "dark": "#8ACAFF"
+      },
+      "widgetHeaderAlignment": "LEFT"
+    },
+    "applyModeEnabled": false
+  }
+}
